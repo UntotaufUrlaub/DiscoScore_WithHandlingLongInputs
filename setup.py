@@ -2,10 +2,10 @@ import setuptools
 
 setuptools.setup(
     name="disco_score",
-    version="0.1.0",
-    description="DiscoScore: Evaluating Text Generation with BERT and Discourse Coherence",
+    version="0.1.1",
+    description="DiscoScore: Evaluating Text Generation with BERT/Longformer and Discourse Coherence",
     author="Wei Zhao",
-    url="https://github.com/aynetdia/DiscoScore",
+    url="https://UntotaufUrlaub/DiscoScore_WithHandlingLongInputs/DiscoScore",
     python_requires=">=3.6",
     packages=setuptools.find_packages(),
     install_requires=[

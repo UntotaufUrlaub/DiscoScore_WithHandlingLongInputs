@@ -13,7 +13,7 @@ DiscoScore is a parameterized, reference-based evaluation, with parameters on th
 Install from GitHub with pip:
 
 ```bash
-pip install "git+https://github.com/AIPHES/DiscoScore.git"
+pip install "git+https://github.com/UntotaufUrlaub/DiscoScore_WithHandlingLongInputs.git"
 ```
 
 Please run [SUMMEval.py](https://github.com/AIPHES/DiscoScore/blob/main/SUMMEval.py) to reproduce the results in our paper. 
@@ -48,6 +48,7 @@ for s, refs in zip(system, references):
 
 # TODO
 1. We will release the code to run experiments on document-level MT.
+2. Improve handling of long inputs by adding native use of Longformer and configurable truncation.
 
 ## References
 
