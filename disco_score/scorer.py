@@ -8,7 +8,7 @@ class DiscoScorer:
 	def __init__(self, device='cuda:0', model_name='bert-base-uncased', we=None):
 
 		config = BertConfig.from_pretrained(model_name, output_hidden_states=True, output_attentions=True, return_dict=True)
-		self.tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case=False)
+		self.tokenizer = BertTokenizer.from_pretrained(model_name, do_lower_case=False, truncation=True)
 		self.model = BertModel.from_pretrained(model_name, config=config)
 		self.model.encoder.layer = torch.nn.ModuleList([layer for layer in self.model.encoder.layer[:8]])
 		self.model.eval()
