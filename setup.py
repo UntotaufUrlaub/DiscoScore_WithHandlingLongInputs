@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="disco_score",
-    version="0.1.1",
+    version="0.1.3",
     description="DiscoScore: Evaluating Text Generation with BERT/Longformer and Discourse Coherence",
     author="Wei Zhao",
     url="https://UntotaufUrlaub/DiscoScore_WithHandlingLongInputs/DiscoScore",
