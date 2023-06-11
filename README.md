@@ -46,9 +46,17 @@ for s, refs in zip(system, references):
    print(disco_scorer.DS_SENT_NN(s, refs)) # SentGraph
 ```
 
+## Truncation
+To deal with inputs too long for the selected model you can enable truncation for the DS_... methods.
+Just pass the max token length to the DiscoScorer object.
+```python
+disco_scorer = DiscoScorer(device='cuda:0', model_name='bert-base-uncased', truncation=512)
+```
+Truncation allows the metric to process long inputs which couldn't be processed otherwise. But be aware that the metric result will be distorted, because truncation means loss of information.
+
 # TODO
 1. We will release the code to run experiments on document-level MT.
-2. Improve handling of long inputs by adding native use of Longformer and configurable truncation.
+2. Improve handling of long inputs by adding native use of Longformer.
 
 ## References
 
