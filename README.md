@@ -13,7 +13,7 @@ DiscoScore is a parameterized, reference-based evaluation, with parameters on th
 Install from GitHub with pip:
 
 ```bash
-pip install "git+https://github.com/UntotaufUrlaub/DiscoScore_WithHandlingLongInputs.git"
+pip install "git+https://github.com/UntotaufUrlaub/DiscoScore_WithHandlingLongInputs/longformer.git"
 ```
 
 Please run [SUMMEval.py](https://github.com/AIPHES/DiscoScore/blob/main/SUMMEval.py) to reproduce the results in our paper. 
@@ -46,9 +46,15 @@ for s, refs in zip(system, references):
    print(disco_scorer.DS_SENT_NN(s, refs)) # SentGraph
 ```
 
+## If you need to handle longer inputs you can use longformer
+```python
+disco_scorer = DiscoScorer(device='cuda:0', model_name='allenai/longformer-base-4096')
+```
+
 # TODO
 1. We will release the code to run experiments on document-level MT.
-2. Improve handling of long inputs by adding native use of Longformer and configurable truncation.
+2. Improve handling of long inputs by adding configurable truncation.
+3. Added performance benchmarks for long inputs, to suggest the best method.
 
 ## References
 
