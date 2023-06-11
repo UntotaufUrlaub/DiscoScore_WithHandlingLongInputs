@@ -47,7 +47,7 @@ for s, refs in zip(system, references):
 ```
 
 ## If you need to handle longer inputs
-you can ether use Longformer or truncation or both. Truncation means loss of information but can handle input of any length. Longformer can handle longer inputs than Bert without information loss, but it still has a limit. So at one point you might need to combine Longformer and truncation.
+you can either use Longformer or truncation or both. Truncation means loss of information but can handle input of any length. Longformer can handle longer inputs than Bert without information loss, but it still has a limit. So at one point you might need to combine Longformer and truncation.
 This is only supported for the DS_... methods atm.
 
 ### Truncation
@@ -63,7 +63,7 @@ disco_scorer = DiscoScorer(device='cuda:0', model_name='allenai/longformer-base-
 
 # TODO
 1. We will release the code to run experiments on document-level MT.
-2. Added performance benchmarks for long inputs, to suggest the best method. (How big is the disadvantage of truncation; Which finetuned longformer models works best)
+2. Add performance benchmarks for long inputs, to suggest the best method. (How big is the disadvantage of truncation; Which finetuned Longformer model works best)
 
 ## References
 

@@ -22,22 +22,26 @@ class DiscoScorer:
 	    
 	def DS_Focus_NN(self, sys, ref):
 	    sys = self.__truncate(sys)
-	    ref = self.__truncate(ref)
+	    for i in range(len(ref)):
+	    	ref[i] = self.__truncate(ref[i])
 	    return discourse.DS_Focus(self.model, self.tokenizer, sys, ref, is_semantic_entity=False)
 
 	def DS_Focus_Entity(self, sys, ref):
 	    sys = self.__truncate(sys)
-	    ref = self.__truncate(ref)
+	    for i in range(len(ref)):
+	    	ref[i] = self.__truncate(ref[i])
 	    return discourse.DS_Focus(self.model, self.tokenizer, sys, ref, is_semantic_entity=True, we=self.we, threshold = 0.8)
 
 	def DS_SENT_NN(self, sys, ref):
 	    sys = self.__truncate(sys)
-	    ref = self.__truncate(ref)
+	    for i in range(len(ref)):
+	    	ref[i] = self.__truncate(ref[i])
 	    return discourse.DS_Sent(self.model, self.tokenizer, sys, ref, is_lexical_graph=False)
 
 	def DS_SENT_Entity(self, sys, ref):
 	    sys = self.__truncate(sys)
-	    ref = self.__truncate(ref)
+	    for i in range(len(ref)):
+	    	ref[i] = self.__truncate(ref[i])
 	    return discourse.DS_Sent(self.model, self.tokenizer, sys, ref, is_lexical_graph=True, we=self.we, threshold = 0.5)
 	        
 	def RC(self, sys, ref):
@@ -57,6 +61,6 @@ class DiscoScorer:
 	def __truncate(self, text):
 	    if self.truncation is not None:
 	        tokens = self.tokenizer.tokenize(text)
-	        return disco_scorer.tokenizer.convert_tokens_to_string(tokens[:min(truncate - 1, len(tokens))])
+	        return self.tokenizer.convert_tokens_to_string(tokens[:min(self.truncation - 1, len(tokens))])
 	    else:
 	        return text
