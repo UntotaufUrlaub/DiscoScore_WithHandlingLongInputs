@@ -16,6 +16,7 @@ class DiscoScorer:
 		    we = load_embeddings('deps', we) 		
 		self.we = we
 		self.truncation = truncation
+		self.device = device
 
 	def LexicalChain(self, sys, ref):
 	    return discourse.LexicalChain(sys, ref)
@@ -24,25 +25,25 @@ class DiscoScorer:
 	    sys = self.__truncate(sys)
 	    for i in range(len(ref)):
 	    	ref[i] = self.__truncate(ref[i])
-	    return discourse.DS_Focus(self.model, self.tokenizer, sys, ref, is_semantic_entity=False)
+	    return discourse.DS_Focus(self.model, self.tokenizer, sys, ref, is_semantic_entity=False, device=self.device)
 
 	def DS_Focus_Entity(self, sys, ref):
 	    sys = self.__truncate(sys)
 	    for i in range(len(ref)):
 	    	ref[i] = self.__truncate(ref[i])
-	    return discourse.DS_Focus(self.model, self.tokenizer, sys, ref, is_semantic_entity=True, we=self.we, threshold = 0.8)
+	    return discourse.DS_Focus(self.model, self.tokenizer, sys, ref, is_semantic_entity=True, we=self.we, threshold = 0.8, device=self.device)
 
 	def DS_SENT_NN(self, sys, ref):
 	    sys = self.__truncate(sys)
 	    for i in range(len(ref)):
 	    	ref[i] = self.__truncate(ref[i])
-	    return discourse.DS_Sent(self.model, self.tokenizer, sys, ref, is_lexical_graph=False)
+	    return discourse.DS_Sent(self.model, self.tokenizer, sys, ref, is_lexical_graph=False, device=self.device)
 
 	def DS_SENT_Entity(self, sys, ref):
 	    sys = self.__truncate(sys)
 	    for i in range(len(ref)):
 	    	ref[i] = self.__truncate(ref[i])
-	    return discourse.DS_Sent(self.model, self.tokenizer, sys, ref, is_lexical_graph=True, we=self.we, threshold = 0.5)
+	    return discourse.DS_Sent(self.model, self.tokenizer, sys, ref, is_lexical_graph=True, we=self.we, threshold=0.5, device=self.device)
 	        
 	def RC(self, sys, ref):
 	    return discourse.RC(sys)
